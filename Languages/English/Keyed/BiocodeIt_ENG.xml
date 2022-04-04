@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<BiocodeIt_SettingsCategory>Biocode It!</BiocodeIt_SettingsCategory>
+	<BiocodedMarketValuePercentLabel>Biocoded weapons retain {0}% of their value.</BiocodedMarketValuePercentLabel>
+	<BiocodedStealChancePercentLabel>Chance that a raider will steal biocoded weapons just to spite you: {0}%</BiocodedStealChancePercentLabel>
+	<BiocodedStealChancePercentExplanation>Note: This only matters if biocoded weapons retain a good portion of their value. In addition, this rolls for each biocoded weapon in range (12 tile radius), for each raider.
+
+Assume 3 raiders break into a storeroom housing 2 biocoded weapons worth 999 Silver each, and 10 stacks of 500 Silver. In this scenario, the chance they will take at least one biocoded weapon will be:
+1 - (1 - {0})^(3 + 2) = {1}%</BiocodedStealChancePercentExplanation>
+
+	<BiocodedNotifyPlayerOfSpiteLabel>Send a notification when a raider is stealing a biocoded weapon.</BiocodedNotifyPlayerOfSpiteLabel>
+	<BiocodedNotifyPlayerOfSpiteAlert>Raider {0} is stealing {1}!</BiocodedNotifyPlayerOfSpiteAlert>
+
+	<BiocodedMarketValueMultiplier>Biocoded</BiocodedMarketValueMultiplier>
+	
+	<BiocodedToolApplied>{0} has been permanently biocoded to {1}.</BiocodedToolApplied>
+
+</LanguageData>

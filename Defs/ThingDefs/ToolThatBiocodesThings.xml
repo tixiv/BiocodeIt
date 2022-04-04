@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="MechSerumBase">	<!-- MechSerumBase from Core -->
+		<defName>DontStealMyBiocodedWeaponTool</defName>
+		<label>biocoding tool</label>
+		<description>A one-use tool that permanently biocodes any weapon to this tool's user.</description>
+		<graphicData>
+			<texPath>Things/Item/Special/MechSerumHealer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stackLimit>10</stackLimit>
+		<statBases>
+			<MarketValue>100</MarketValue>
+		</statBases>
+		<thingCategories>
+			<li>Items</li>
+		</thingCategories>
+		<tradeability>Sellable</tradeability>
+		<comps>
+			<li Class="CompProperties_Usable">
+				<useJob>UseItem</useJob>
+				<useLabel>Use biocoding tool</useLabel>
+				<useDuration>0</useDuration>
+			</li>
+			
+			<li Class="Krelinos_BiocodeIt.CompProperties_Equipment">
+			<!-- <li Class="CompProperties_Targetable"> -->
+				<compClass>Krelinos_BiocodeIt.CompTargetable_Equipment</compClass>
+				<includeRangedWeapons>true</includeRangedWeapons>
+				<includeMeleeWeapons>true</includeMeleeWeapons>
+				<!-- <includeApparel>true</includeApparel> -->
+				<industrialTierAndUpOnly>true</industrialTierAndUpOnly>
+				<!-- <spacerTierAndUpOnly>true</spacerTierAndUpOnly> -->
+				<nonBiocodedEquipmentOnly>true</nonBiocodedEquipmentOnly>
+			</li>
+			<li>
+				<compClass>Krelinos_BiocodeIt.CompTargetEffect_Biocode</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>
