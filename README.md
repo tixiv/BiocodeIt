@@ -1,5 +1,5 @@
 # BiocodeIt
-A mod for Rimworld that allows you to biocode your own weapons.
+A mod for Rimworld that allows you to biocode your own weapons. Requires Harmony.
 ## Overview
 Your enemies biocode their weapons to prevent you from stealing and using them, so why can't you? Well with this mod, now you can!
 
