@@ -55,9 +55,8 @@ namespace Krelinos_BiocodeIt
             if (!Props.includeRangedWeapons && targetedThing.def.IsRangedWeapon) { return false; }
             if (!Props.includeMeleeWeapons && targetedThing.def.IsMeleeWeapon) { return false; }
             if (!Props.includeApparel && targetedThing.def.IsApparel) { return false; }
-            if (Props.industrialTierAndUpOnly && targetedThing.def.techLevel < TechLevel.Industrial) { return false; }
-            if (Props.spacerTierAndUpOnly && targetedThing.def.techLevel < TechLevel.Spacer) { return false; }
             if (Props.nonBiocodedEquipmentOnly && CompBiocodable.IsBiocoded(targetedThing)) { return false; }
+            if (((int)targetedThing.def.techLevel) < BiocodeIt_Settings.minTechLevelRequired) { return false; }
 
             return true;
         }

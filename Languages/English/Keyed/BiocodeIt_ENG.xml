@@ -14,5 +14,11 @@ Assume 3 raiders break into a storeroom housing 2 biocoded weapons worth 999 Sil
 	<BiocodedMarketValueMultiplier>Biocoded</BiocodedMarketValueMultiplier>
 	
 	<BiocodedToolApplied>{0} has been permanently biocoded to {1}.</BiocodedToolApplied>
-
+	
+	<BiocodedMinTechLevelRequiredLabel>Weapons must be this tech level for you to biocode:</BiocodedMinTechLevelRequiredLabel>
+	<BiocodedMinTechLevelRequiredArcho>Archotech</BiocodedMinTechLevelRequiredArcho>
+	<BiocodedMinTechLevelRequiredUltra>Ultra or higher</BiocodedMinTechLevelRequiredUltra>
+	<BiocodedMinTechLevelRequiredSpacer>Spacer or higher</BiocodedMinTechLevelRequiredSpacer>
+	<BiocodedMinTechLevelRequiredIndustrial>Industrial or higher</BiocodedMinTechLevelRequiredIndustrial>
+	<BiocodedMinTechLevelRequiredYNoMedievalAndBelow>Note: Rimworld outright refuses to biocode anything below industrial.</BiocodedMinTechLevelRequiredYNoMedievalAndBelow>
 </LanguageData>
