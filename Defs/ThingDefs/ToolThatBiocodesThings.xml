@@ -29,8 +29,6 @@
 				<includeRangedWeapons>true</includeRangedWeapons>
 				<includeMeleeWeapons>true</includeMeleeWeapons>
 				<!-- <includeApparel>true</includeApparel> -->
-				<industrialTierAndUpOnly>true</industrialTierAndUpOnly>
-				<!-- <spacerTierAndUpOnly>true</spacerTierAndUpOnly> -->
 				<nonBiocodedEquipmentOnly>true</nonBiocodedEquipmentOnly>
 			</li>
 			<li>
