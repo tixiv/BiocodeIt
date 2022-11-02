@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<ThingDef ParentName="MechSerumBase">	<!-- MechSerumBase from Core -->
-		<defName>DontStealMyBiocodedWeaponTool</defName>
+		<defName>BiocoderToolPleaseDontStealMyLegendary</defName>
 		<label>biocoding tool</label>
 		<description>A one-use tool that permanently biocodes any weapon to this tool's user.</description>
 		<graphicData>
@@ -23,13 +23,18 @@
 				<useDuration>0</useDuration>
 			</li>
 			
-			<li Class="Krelinos_BiocodeIt.CompProperties_Equipment">
-			<!-- <li Class="CompProperties_Targetable"> -->
+			<!-- This is no longer needed since I added what they do to the mod settings. -->
+			<!-- <li Class="Krelinos_BiocodeIt.CompProperties_Equipment">
 				<compClass>Krelinos_BiocodeIt.CompTargetable_Equipment</compClass>
 				<includeRangedWeapons>true</includeRangedWeapons>
 				<includeMeleeWeapons>true</includeMeleeWeapons>
-				<!-- <includeApparel>true</includeApparel> -->
+				<includeApparel>true</includeApparel>
+				<industrialTierAndUpOnly>true</industrialTierAndUpOnly>
+				<spacerTierAndUpOnly>true</spacerTierAndUpOnly>
 				<nonBiocodedEquipmentOnly>true</nonBiocodedEquipmentOnly>
+			</li> -->
+			<li Class="CompProperties_Targetable">
+				<compClass>Krelinos_BiocodeIt.CompTargetable_Equipment</compClass>
 			</li>
 			<li>
 				<compClass>Krelinos_BiocodeIt.CompTargetEffect_Biocode</compClass>

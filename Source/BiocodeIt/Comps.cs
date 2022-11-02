@@ -14,7 +14,7 @@ namespace Krelinos_BiocodeIt
     // https://steamcommunity.com/sharedfiles/filedetails/?id=731287727
     public class CompTargetable_Equipment : CompTargetable
     {
-        public new CompProperties_Equipment Props => (CompProperties_Equipment)this.props;
+        //public new CompProperties_Equipment Props => (CompProperties_Equipment)this.props;
 
         protected override bool PlayerChoosesTarget => true;
         public override IEnumerable<Thing> GetTargets(Thing targetChosenByPlayer = null)
@@ -48,20 +48,30 @@ namespace Krelinos_BiocodeIt
         bool EquipmentValidator(TargetInfo tInfo)
         {
             Thing targetedThing = tInfo.Thing;
-
+            
             if (targetedThing == null) { return false; }
             if (!targetedThing.def.IsWithinCategory(ThingCategoryDefOf.Weapons) && !targetedThing.def.IsWithinCategory(ThingCategoryDefOf.Apparel) ) { return false; }
 
-            if (!Props.includeRangedWeapons && targetedThing.def.IsRangedWeapon) { return false; }
-            if (!Props.includeMeleeWeapons && targetedThing.def.IsMeleeWeapon) { return false; }
-            if (!Props.includeApparel && targetedThing.def.IsApparel) { return false; }
-            if (Props.nonBiocodedEquipmentOnly && CompBiocodable.IsBiocoded(targetedThing)) { return false; }
-            if (((int)targetedThing.def.techLevel) < BiocodeIt_Settings.minTechLevelRequired) { return false; }
+            if ( targetedThing.def.IsMeleeWeapon
+                || targetedThing.def.IsApparel
+                || targetedThing.def.techLevel < TechLevel.Industrial
+                || CompBiocodable.IsBiocoded(targetedThing) )
+                return false;
+
+//            if (!BiocodeIt_Settings.allowRanged && targetedThing.def.IsRangedWeapon) { return false; }
+//            if (!BiocodeIt_Settings.allowMelee && targetedThing.def.IsMeleeWeapon) { return false; }
+//            if (!BiocodeIt_Settings.allowApparel && targetedThing.def.IsApparel) { return false; }
+//            if (!BiocodeIt_Settings.ignoreTechLevel && targetedThing.def.techLevel < TechLevel.Industrial) { return false; }
+//            if (BiocodeIt_Settings.onlyNonBiocoded && CompBiocodable.IsBiocoded(targetedThing)) { return false; }
 
             return true;
         }
     }
 
+    /*
+        So this is now obsolete since I replaced comp properties with mod settings.
+        Keeping it here as legacy code for those curious.
+    
     public class CompProperties_Equipment : CompProperties_Targetable
     {
         public bool includeMeleeWeapons;        // These bools are okay to be left uninitialized.
@@ -70,18 +80,19 @@ namespace Krelinos_BiocodeIt
         public bool industrialTierAndUpOnly;    // It will probably look something like this in some
         public bool spacerTierAndUpOnly;        // XML somewhere:
         public bool nonBiocodedEquipmentOnly;
-    }                                           /*
-                                                <ThingDef>
-                                                    ...
-                                                    <comps>
-                                                        <li Class="Krelinos_BiocodeIt.CompProperties_Equipment">
-                                                            <compClass>Krelinos_BiocodeIt.CompTargetable_Equipment</compClass>
-                                                            <includeMeleeWeapons>true</includeMeleeWeapons>
-                                                            <spacerTierAndUpOnly>true</spacerTierAndUpOnly>
-                                                        </li>
-                                                    </comps>
-                                                </ThingDef>
-                                                */
+    }                                           
+//                                                <ThingDef>
+//                                                    ...
+//                                                    <comps>
+//                                                        <li Class="Krelinos_BiocodeIt.CompProperties_Equipment">
+//                                                            <compClass>Krelinos_BiocodeIt.CompTargetable_Equipment</compClass>
+//                                                            <includeMeleeWeapons>true</includeMeleeWeapons>
+//                                                            <spacerTierAndUpOnly>true</spacerTierAndUpOnly>
+//                                                        </li>
+//                                                    </comps>
+//                                                </ThingDef>
+                                                
+    */
 
     public class CompTargetEffect_Biocode : CompTargetEffect
     {

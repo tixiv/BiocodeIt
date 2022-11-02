@@ -28,7 +28,7 @@
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
-			<DontStealMyBiocodedWeaponTool>1</DontStealMyBiocodedWeaponTool>
+			<BiocoderToolPleaseDontStealMyLegendary>1</BiocoderToolPleaseDontStealMyLegendary>
 		</products>
 		<skillRequirements>
 			<Crafting>6</Crafting>

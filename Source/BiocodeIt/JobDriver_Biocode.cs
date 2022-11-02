@@ -55,9 +55,11 @@ namespace Krelinos_BiocodeIt
             {
                 targetCompBiocode = new CompBiocodable();
             }
-            Messages.Message(String.Format("BiocodedToolApplied".Translate(), Weapon.LabelShort, this.pawn.LabelShort), Weapon, MessageTypeDefOf.PositiveEvent, true);
+
+            Messages.Message( String.Format( "BiocodedToolApplied".Translate(), Weapon.LabelShort, this.pawn.LabelShort ), Weapon, MessageTypeDefOf.PositiveEvent, true );
             targetCompBiocode.CodeFor(this.pawn);
             SoundDefOf.TechMedicineUsed.PlayOneShot(SoundInfo.InMap(Weapon, MaintenanceType.None));
+
             Biocoder.SplitOff(1).Destroy(DestroyMode.Vanish);
         }
 

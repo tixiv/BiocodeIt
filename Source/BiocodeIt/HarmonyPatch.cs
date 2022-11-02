@@ -30,23 +30,30 @@ namespace Krelinos_BiocodeIt
             {
                 if (CompBiocodable.IsBiocoded(item))
                 {
-                    if (UnityEngine.Random.Range(0, 100) > BiocodeIt_Settings.biocodedStealChancePercent)
+                    // 2 Nov 2022 (post 1.4) - Only steal from player's non-slave colonist
+                    // Previously, raiders would steal their own fallen comrades' weapons if it was valuable enough, which was silly.
+                    CompBiocodable itemCompBiocodable = item.TryGetComp<CompBiocodable>();
+                    if( itemCompBiocodable.CodedPawn.IsFreeNonSlaveColonist 
+                        && UnityEngine.Random.Range( 0, 100 ) > BiocodeIt_Settings.biocodedStealChancePercent )
                     {
-                        if( disallowed == null)
+                        // Thing is biocoded to a player pawn and the 35%(default) proced.
+                        if ( BiocodeIt_Settings.notifyPlayerOfSpite )
+                        {
+                            Messages.Message( String.Format( "BiocodedNotifyPlayerOfSpiteAlert".Translate(), thief.NameShortColored, item.LabelShort ), thief, MessageTypeDefOf.NegativeEvent, true );
+                        }
+                    }
+
+                    else    // Thing is biocoded to a non player pawn, or the 35% didn't proc.
+                    {
+                        if ( disallowed == null )
                         {
                             disallowed = new List<Thing>();
                         }
 
-                        disallowed.Add(item);   // Blacklist the item from future scans...
+                        disallowed.Add( item );   // Blacklist the item from future scans...
                         // ...And find a different Thing to steal
-                        __result = StealAIUtility.TryFindBestItemToSteal(root, map, maxDist, out item, thief, disallowed);
-                    }
-                    else
-                    {
-                        if( BiocodeIt_Settings.notifyPlayerOfSpite)
-                        {
-                            Messages.Message(String.Format("BiocodedNotifyPlayerOfSpiteAlert".Translate(), thief.NameShortColored, item.LabelShort), thief, MessageTypeDefOf.NegativeEvent, true);
-                        }
+                        // NOTE: This makes TryFindBestItemToSteal recursive. I hope it doesn't affect things too badly.
+                        __result = StealAIUtility.TryFindBestItemToSteal( root, map, maxDist, out item, thief, disallowed );
                     }
                 }
             }
