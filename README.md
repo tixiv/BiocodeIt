@@ -21,4 +21,4 @@ As long as the weapon can be equipped like in vanilla, it can biocoded.
 
 [Steam Version](https://steamcommunity.com/sharedfiles/filedetails/?id=2789197256)
 
-Also this is my first mod of considerable size. Yay~. It became more complex than I thought it would be, but I learned a lot so I guess that's cool, like Harmony. Harmony is so cool. Also may I recommend the [Rename Everything](https://steamcommunity.com/sharedfiles/filedetails/?id=2561691857) mod to help personalize your weapon names?
+Also this is my first mod of considerable size. Yay~. It became more complex than I thought it would be, but I learned a lot so I guess that's cool, like Harmony. Harmony is so cool. Also may I recommend the [Rename Everything](https://steamcommunity.com/sharedfiles/filedetails/?id=2561691857) mod to help personalize your weapon names and the [Favourites!](https://steamcommunity.com/sharedfiles/filedetails/?id=2720562164) mod to help filter your smelting recipes?
