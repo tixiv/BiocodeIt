@@ -17,24 +17,12 @@ namespace Krelinos_BiocodeIt
         public static int biocodedStealChancePercent = 0;
         public static int biocodedMarketValuePercent = 0;
 
-        public static bool allowRanged = true;
-        public static bool allowMelee = false;
-        public static bool allowApparel = false;
-        public static bool ignoreTechLevel = false;
-        public static bool onlyNonBiocoded = false;
-
         public static bool notifyPlayerOfSpite;
 
         public override void ExposeData()
         {
             Scribe_Values.Look(ref biocodedMarketValuePercent, "biocodedMarketValuePercent", 35);
-            Scribe_Values.Look(ref biocodedStealChancePercent, "biocodedStealChancePercent", 0);
-
-            Scribe_Values.Look( ref allowRanged, "allowRanged", true );
-            Scribe_Values.Look( ref allowMelee, "allowMelee", false );
-            Scribe_Values.Look( ref allowApparel, "allowApparel", false );
-            Scribe_Values.Look( ref ignoreTechLevel, "ignoreTechLevel", false );
-            Scribe_Values.Look( ref ignoreTechLevel, "onlyNonBiocoded", false );
+            Scribe_Values.Look(ref biocodedStealChancePercent, "biocodedStealChancePercent", 2);
 
             Scribe_Values.Look(ref notifyPlayerOfSpite, "notifyPlayerOfSpite", true);
             base.ExposeData();
@@ -71,18 +59,12 @@ namespace Krelinos_BiocodeIt
 
             // 2 Nov 2022
             // I've used dnSpy for 4 hours trying to find out why you cannot biocode melee, apparel, medieval, neolthic.
-            // I found nothiiiing! Ugh. Disabling these settings until someone tells me or something.
+            // I found nothiiiing! Ugh.
 
-            //listingStandard.Label( "BiocodeAllowList".Translate() );
-            //listingStandard.CheckboxLabeled( "BiocodeAllowRanged".Translate(), ref BiocodeIt_Settings.allowRanged );
-            //listingStandard.CheckboxLabeled( "BiocodeAllowMelee".Translate(), ref BiocodeIt_Settings.allowMelee );
-            //listingStandard.CheckboxLabeled( "BiocodeAllowApparel".Translate(), ref BiocodeIt_Settings.allowApparel );
-            //listingStandard.CheckboxLabeled( "BiocodeIgnoreTechLevel".Translate(), ref BiocodeIt_Settings.ignoreTechLevel );
-            //listingStandard.Indent();
-            //Text.Font = GameFont.Tiny;
-            //listingStandard.Label( "BiocodeIgnoreTechLevel.Description".Translate() );
-            //Text.Font = GameFont.Small;
-            //listingStandard.Outdent();
+            // 12 Nov 2022
+            // KasumiTakeshi on Steam is incredible. As it turns out, BaseApparel and BaseWeapon need the "Comp_Biocodable" component.
+            // Only BaseHumanMakeableGun (industrial and up) had the Comp_Biocodable. This is now changed in an XML patch.
+
 
             listingStandard.CheckboxLabeled("BiocodedNotifyPlayerOfSpiteLabel".Translate(), ref BiocodeIt_Settings.notifyPlayerOfSpite);
 

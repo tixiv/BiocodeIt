@@ -52,11 +52,11 @@ namespace Krelinos_BiocodeIt
             if (targetedThing == null) { return false; }
             if (!targetedThing.def.IsWithinCategory(ThingCategoryDefOf.Weapons) && !targetedThing.def.IsWithinCategory(ThingCategoryDefOf.Apparel) ) { return false; }
 
-            if ( targetedThing.def.IsMeleeWeapon
-                || targetedThing.def.IsApparel
-                || targetedThing.def.techLevel < TechLevel.Industrial
-                || CompBiocodable.IsBiocoded(targetedThing) )
-                return false;
+            //if ( targetedThing.def.IsMeleeWeapon
+            //    || targetedThing.def.IsApparel
+            //    || targetedThing.def.techLevel < TechLevel.Industrial
+            //    || CompBiocodable.IsBiocoded(targetedThing) )
+            //    return false;
 
 //            if (!BiocodeIt_Settings.allowRanged && targetedThing.def.IsRangedWeapon) { return false; }
 //            if (!BiocodeIt_Settings.allowMelee && targetedThing.def.IsMeleeWeapon) { return false; }

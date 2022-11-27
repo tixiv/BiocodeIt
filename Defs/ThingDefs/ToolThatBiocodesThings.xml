@@ -22,17 +22,6 @@
 				<useLabel>Use biocoding tool</useLabel>
 				<useDuration>0</useDuration>
 			</li>
-			
-			<!-- This is no longer needed since I added what they do to the mod settings. -->
-			<!-- <li Class="Krelinos_BiocodeIt.CompProperties_Equipment">
-				<compClass>Krelinos_BiocodeIt.CompTargetable_Equipment</compClass>
-				<includeRangedWeapons>true</includeRangedWeapons>
-				<includeMeleeWeapons>true</includeMeleeWeapons>
-				<includeApparel>true</includeApparel>
-				<industrialTierAndUpOnly>true</industrialTierAndUpOnly>
-				<spacerTierAndUpOnly>true</spacerTierAndUpOnly>
-				<nonBiocodedEquipmentOnly>true</nonBiocodedEquipmentOnly>
-			</li> -->
 			<li Class="CompProperties_Targetable">
 				<compClass>Krelinos_BiocodeIt.CompTargetable_Equipment</compClass>
 			</li>

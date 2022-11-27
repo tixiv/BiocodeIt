@@ -33,17 +33,18 @@ namespace Krelinos_BiocodeIt
                     // 2 Nov 2022 (post 1.4) - Only steal from player's non-slave colonist
                     // Previously, raiders would steal their own fallen comrades' weapons if it was valuable enough, which was silly.
                     CompBiocodable itemCompBiocodable = item.TryGetComp<CompBiocodable>();
-                    if( itemCompBiocodable.CodedPawn.IsFreeNonSlaveColonist 
+                    if( itemCompBiocodable.CodedPawn.IsFreeNonSlaveColonist
+                        && BiocodeIt_Settings.biocodedStealChancePercent > 0
                         && UnityEngine.Random.Range( 0, 100 ) > BiocodeIt_Settings.biocodedStealChancePercent )
                     {
-                        // Thing is biocoded to a player pawn and the 35%(default) proced.
+                        // Thing is biocoded to a player pawn and the steal chance (0% by default) proc-ed.
                         if ( BiocodeIt_Settings.notifyPlayerOfSpite )
                         {
                             Messages.Message( String.Format( "BiocodedNotifyPlayerOfSpiteAlert".Translate(), thief.NameShortColored, item.LabelShort ), thief, MessageTypeDefOf.NegativeEvent, true );
                         }
                     }
 
-                    else    // Thing is biocoded to a non player pawn, or the 35% didn't proc.
+                    else    // Thing is biocoded to a non player pawn, or the steal chance didn't proc.
                     {
                         if ( disallowed == null )
                         {
@@ -101,16 +102,16 @@ namespace Krelinos_BiocodeIt
                     __result = true;
                 }
             }
-//            ThingDef thingDef;
-//            __result = (thingDef = (req.Def as ThingDef)) != null
-//                && !req.HasThing                                                                                    // Yeah... this is a copy and paste from
-//                && (                                                                                                // the unpatched function but the check
-//                    (thingDef.category == ThingCategory.Building && thingDef.Minifiable)                            // for biocode is altered. If you ever wondered
-//                    || (TradeUtility.EverPlayerSellable(thingDef) || CompBiocodable.IsBiocoded(req.Thing))          // why the game never reports the value of
-//                    || (thingDef.tradeability.TraderCanSell()                                                       // non-minifiable builings, this is why.
-//                        && (thingDef.category == ThingCategory.Item || thingDef.category == ThingCategory.Pawn)     // Maybe I'll make a mod that lets you.
-//                       )                                                                                            // Or hey, maybe you can!
-//                   );
+            //            ThingDef thingDef;
+            //            __result = (thingDef = (req.Def as ThingDef)) != null
+            //                && !req.HasThing                                                                                    // Yeah... this is a copy and paste from
+            //                && (                                                                                                // the unpatched function but the check
+            //                    (thingDef.category == ThingCategory.Building && thingDef.Minifiable)                            // for biocode is altered. If you ever wondered
+            //                    || (TradeUtility.EverPlayerSellable(thingDef) || CompBiocodable.IsBiocoded(req.Thing))          // why the game never reports the value of
+            //                    || (thingDef.tradeability.TraderCanSell()                                                       // non-minifiable builings in the info window,
+            //                        && (thingDef.category == ThingCategory.Item || thingDef.category == ThingCategory.Pawn)     // this is why. Maybe I'll make a mod that
+            //                       )                                                                                            // lets you. Or hey, maybe you can!
+            //                   );
         }
     }
 }
