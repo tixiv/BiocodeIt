@@ -1,3 +1,5 @@
 .vs
 obj
+bin
 packages
+BiocodeIt.csproj.user

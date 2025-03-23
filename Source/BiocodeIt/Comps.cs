@@ -56,24 +56,14 @@ namespace Krelinos_BiocodeIt
             
             if (targetedThing == null) { return false; }
 
-            if (IsBiocodable(targetedThing) && !CompBiocodable.IsBiocoded(targetedThing))
-                return true;
+            if (IsBiocodable(targetedThing))
+            {
+                // If the thing is already biocodeable we can only code it if it isn't yet.
+                // That's the whole point. This tool is meant to biocode your weapons, not to re-biocode them.
+                return !CompBiocodable.IsBiocoded(targetedThing);
+            }
 
             return false;
-
-            // if (!targetedThing.def.IsWithinCategory(ThingCategoryDefOf.Weapons) && !targetedThing.def.IsWithinCategory(ThingCategoryDefOf.Apparel) ) { return false; }
-
-            //if ( targetedThing.def.IsMeleeWeapon
-            //    || targetedThing.def.IsApparel
-            //    || targetedThing.def.techLevel < TechLevel.Industrial
-            //    || CompBiocodable.IsBiocoded(targetedThing) )
-            //    return false;
-
-            //            if (!BiocodeIt_Settings.allowRanged && targetedThing.def.IsRangedWeapon) { return false; }
-            //            if (!BiocodeIt_Settings.allowMelee && targetedThing.def.IsMeleeWeapon) { return false; }
-            //            if (!BiocodeIt_Settings.allowApparel && targetedThing.def.IsApparel) { return false; }
-            //            if (!BiocodeIt_Settings.ignoreTechLevel && targetedThing.def.techLevel < TechLevel.Industrial) { return false; }
-            //            if (BiocodeIt_Settings.onlyNonBiocoded && CompBiocodable.IsBiocoded(targetedThing)) { return false; }
         }
     }
 

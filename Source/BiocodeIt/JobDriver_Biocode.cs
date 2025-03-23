@@ -50,17 +50,22 @@ namespace Krelinos_BiocodeIt
 
         private void Biocode()
         {
-            CompBiocodable targetCompBiocode = Weapon.TryGetComp<CompBiocodable>();
-            if (targetCompBiocode == null)
+            // Does the thing already have CompBiocodable? Yes: use it
+            CompBiocodable compBiocodable = Weapon.TryGetComp<CompBiocodable>();
+            
+            if (compBiocodable != null)
             {
-                targetCompBiocode = new CompBiocodable();
+
+                Messages.Message(String.Format("BiocodedToolApplied".Translate(), Weapon.LabelShort, this.pawn.LabelShort), Weapon, MessageTypeDefOf.PositiveEvent, true);
+                compBiocodable.CodeFor(this.pawn);
+                SoundDefOf.TechMedicineUsed.PlayOneShot(SoundInfo.InMap(Weapon, MaintenanceType.None));
+
+                Biocoder.SplitOff(1).Destroy(DestroyMode.Vanish);
             }
-
-            Messages.Message( String.Format( "BiocodedToolApplied".Translate(), Weapon.LabelShort, this.pawn.LabelShort ), Weapon, MessageTypeDefOf.PositiveEvent, true );
-            targetCompBiocode.CodeFor(this.pawn);
-            SoundDefOf.TechMedicineUsed.PlayOneShot(SoundInfo.InMap(Weapon, MaintenanceType.None));
-
-            Biocoder.SplitOff(1).Destroy(DestroyMode.Vanish);
+            else
+            {
+                Log.Error("Unable to biocode item.");
+            }
         }
 
         private const TargetIndex WeaponIndex = TargetIndex.A;

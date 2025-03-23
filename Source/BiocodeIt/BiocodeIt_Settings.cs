@@ -19,12 +19,16 @@ namespace Krelinos_BiocodeIt
 
         public static bool notifyPlayerOfSpite;
 
+        public static bool biocodeAllTheThings = true;
+
         public override void ExposeData()
         {
             Scribe_Values.Look(ref biocodedMarketValuePercent, "biocodedMarketValuePercent", 35);
             Scribe_Values.Look(ref biocodedStealChancePercent, "biocodedStealChancePercent", 2);
 
             Scribe_Values.Look(ref notifyPlayerOfSpite, "notifyPlayerOfSpite", true);
+
+            Scribe_Values.Look(ref biocodeAllTheThings, "biocodeAllTheThings", true);
             base.ExposeData();
         }
     }
@@ -57,16 +61,12 @@ namespace Krelinos_BiocodeIt
 
             listingStandard.Gap();
 
-            // 2 Nov 2022
-            // I've used dnSpy for 4 hours trying to find out why you cannot biocode melee, apparel, medieval, neolthic.
-            // I found nothiiiing! Ugh.
-
-            // 12 Nov 2022
-            // KasumiTakeshi on Steam is incredible. As it turns out, BaseApparel and BaseWeapon need the "Comp_Biocodable" component.
-            // Only BaseHumanMakeableGun (industrial and up) had the Comp_Biocodable. This is now changed in an XML patch.
-
-
             listingStandard.CheckboxLabeled("BiocodedNotifyPlayerOfSpiteLabel".Translate(), ref BiocodeIt_Settings.notifyPlayerOfSpite);
+
+            listingStandard.Gap();
+
+            listingStandard.Label("Make all weapons and apperel biocodable. This mod is pretty safe if you leave this turned off. If you turn it on there is a little bit of danger because we are adding a CompBiocodable to things that normally don't have it. It should not break your savegame and you should be able to remove the mod without breaking anything still.");
+            listingStandard.CheckboxLabeled("Biocode all the things", ref BiocodeIt_Settings.biocodeAllTheThings);
 
             listingStandard.End();
             base.DoSettingsWindowContents(inRect);

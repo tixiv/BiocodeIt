@@ -114,4 +114,43 @@ namespace Krelinos_BiocodeIt
             //                   );
         }
     }
+
+    [HarmonyLib.HarmonyPatch(typeof(ThingWithComps))]
+    [HarmonyLib.HarmonyPatch("InitializeComps")]
+    public static class ThingWithComps_InitializeComps_Patch
+    {
+        // Postfix method, runs after the original InitializeComps is called
+        public static void Postfix(ThingWithComps __instance)
+        {
+            if (__instance.GetComp<CompBiocodable>() == null)
+            {
+                // Normally this ThingWithComps is not biocodable.
+
+                // Should we make it biocodable?
+
+                if (BiocodeIt_Settings.biocodeAllTheThings &&
+                    (__instance.def.IsWithinCategory(ThingCategoryDefOf.Weapons) || __instance.def.IsWithinCategory(ThingCategoryDefOf.Apparel)))
+                {
+                    // Yes: add CompBiocodable to it.
+                    // Doing it like this is more compatible than through an xml file because
+                    // Here we get to decide whether we should add a CompBiocodable after
+                    // all the other components have been initialized and we can check that we are
+                    // not messing with an existing CompBiocodable.
+
+                    CompProperties_Biocodable cpb = new CompProperties_Biocodable
+                    {
+                        biocodeOnEquip = false
+                    };
+
+                    var compBiocodable = new CompBiocodable
+                    {
+                        parent = __instance
+                    };
+                    __instance.AllComps.Add(compBiocodable);
+
+                    compBiocodable.Initialize(cpb);
+                }
+            }
+        }
+    }
 }
