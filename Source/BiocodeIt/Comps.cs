@@ -45,12 +45,23 @@ namespace Krelinos_BiocodeIt
             };
         }
 
+        public static bool IsBiocodable(Thing thing)
+        {
+            return thing.TryGetComp<CompBiocodable>() != null;
+        }
+
         bool EquipmentValidator(TargetInfo tInfo)
         {
             Thing targetedThing = tInfo.Thing;
             
             if (targetedThing == null) { return false; }
-            if (!targetedThing.def.IsWithinCategory(ThingCategoryDefOf.Weapons) && !targetedThing.def.IsWithinCategory(ThingCategoryDefOf.Apparel) ) { return false; }
+
+            if (IsBiocodable(targetedThing) && !CompBiocodable.IsBiocoded(targetedThing))
+                return true;
+
+            return false;
+
+            // if (!targetedThing.def.IsWithinCategory(ThingCategoryDefOf.Weapons) && !targetedThing.def.IsWithinCategory(ThingCategoryDefOf.Apparel) ) { return false; }
 
             //if ( targetedThing.def.IsMeleeWeapon
             //    || targetedThing.def.IsApparel
@@ -58,13 +69,11 @@ namespace Krelinos_BiocodeIt
             //    || CompBiocodable.IsBiocoded(targetedThing) )
             //    return false;
 
-//            if (!BiocodeIt_Settings.allowRanged && targetedThing.def.IsRangedWeapon) { return false; }
-//            if (!BiocodeIt_Settings.allowMelee && targetedThing.def.IsMeleeWeapon) { return false; }
-//            if (!BiocodeIt_Settings.allowApparel && targetedThing.def.IsApparel) { return false; }
-//            if (!BiocodeIt_Settings.ignoreTechLevel && targetedThing.def.techLevel < TechLevel.Industrial) { return false; }
-//            if (BiocodeIt_Settings.onlyNonBiocoded && CompBiocodable.IsBiocoded(targetedThing)) { return false; }
-
-            return true;
+            //            if (!BiocodeIt_Settings.allowRanged && targetedThing.def.IsRangedWeapon) { return false; }
+            //            if (!BiocodeIt_Settings.allowMelee && targetedThing.def.IsMeleeWeapon) { return false; }
+            //            if (!BiocodeIt_Settings.allowApparel && targetedThing.def.IsApparel) { return false; }
+            //            if (!BiocodeIt_Settings.ignoreTechLevel && targetedThing.def.techLevel < TechLevel.Industrial) { return false; }
+            //            if (BiocodeIt_Settings.onlyNonBiocoded && CompBiocodable.IsBiocoded(targetedThing)) { return false; }
         }
     }
 
