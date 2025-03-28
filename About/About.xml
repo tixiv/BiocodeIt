@@ -1,19 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>Biocode It!</name>
-	<author>Krelinos</author>
-	<url></url>
-	<packageId>Krelinos.BiocodeIt</packageId>
-	<supportedVersions>
-		<li>1.5</li>
-	</supportedVersions>
-	<description>Adds an item that biocodes your weapons to discourage thief.</description>
-	<modDependencies>
+    <name>Biocode It!</name>
+    <author>Tixiv</author>
+    <url>https://github.com/tixiv/BiocodeIt</url>
+    <packageId>Tixiv.BiocodeIt</packageId>
+    <supportedVersions>
+        <li>1.5</li>
+    </supportedVersions>
+    <description>This mod is a port of the BiocodeIt! mod by Krelinos to game version 1.5.
+
+Original description:
+Your enemies biocode their weapons to prevent you from stealing and using them, so why can't you? Well with this mod, now you can!
+
+Simply grab your nearest advanced component, craft it into a biocoding tool at the machining table, and use it on your favorite weapon to biocode it! Whoever uses the tool will be the owner of the weapon forever....
+
+...Which is actually quite a downside. Make sure you really want this before you apply it.
+
+Notes from me (Tixiv):
+I changed the way in which the "biocode all the things" feature works so it is compatible with game version 1.5. With the old method lots off errors would appear during loading because some things were "double biocodable" by accident. The new way to make things biocodable should be more compatible because CompBiocodable is added at the very end when it is not yet present on an item.
+
+Porting this mod to 1.5 got me into Rimworld-modding! I just wanted this mod so bad in my game. The main appeal of using it for me is by the way not theft but colony whealth concerns. It's amazing to be able to just biocode expensive guns and armor. It is also totally immersive for me, because of course raiders wouldn't come steal our stuff because they know we biocode the best things.
+
+Also check out my original mod Biocode Cracker if you like this one.
+
+</description>
+    <modDependencies>
         <li>
             <packageId>brrainz.harmony</packageId>
             <displayName>Harmony</displayName>
-			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld</downloadUrl>
-			<steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+            <downloadUrl>https://github.com/pardeike/HarmonyRimWorld</downloadUrl>
+            <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
         </li>
     </modDependencies>
 </ModMetaData>
