@@ -14,8 +14,6 @@ namespace Krelinos_BiocodeIt
     // https://steamcommunity.com/sharedfiles/filedetails/?id=731287727
     public class CompTargetable_Equipment : CompTargetable
     {
-        //public new CompProperties_Equipment Props => (CompProperties_Equipment)this.props;
-
         protected override bool PlayerChoosesTarget => true;
         public override IEnumerable<Thing> GetTargets(Thing targetChosenByPlayer = null)
         {
@@ -66,32 +64,6 @@ namespace Krelinos_BiocodeIt
             return false;
         }
     }
-
-    /*
-        So this is now obsolete since I replaced comp properties with mod settings.
-        Keeping it here as legacy code for those curious.
-    
-    public class CompProperties_Equipment : CompProperties_Targetable
-    {
-        public bool includeMeleeWeapons;        // These bools are okay to be left uninitialized.
-        public bool includeRangedWeapons;       // When CompTargetable_Equipment is defined in an XML,
-        public bool includeApparel;             // the relevant ones will be set to true.
-        public bool industrialTierAndUpOnly;    // It will probably look something like this in some
-        public bool spacerTierAndUpOnly;        // XML somewhere:
-        public bool nonBiocodedEquipmentOnly;
-    }                                           
-//                                                <ThingDef>
-//                                                    ...
-//                                                    <comps>
-//                                                        <li Class="Krelinos_BiocodeIt.CompProperties_Equipment">
-//                                                            <compClass>Krelinos_BiocodeIt.CompTargetable_Equipment</compClass>
-//                                                            <includeMeleeWeapons>true</includeMeleeWeapons>
-//                                                            <spacerTierAndUpOnly>true</spacerTierAndUpOnly>
-//                                                        </li>
-//                                                    </comps>
-//                                                </ThingDef>
-                                                
-    */
 
     public class CompTargetEffect_Biocode : CompTargetEffect
     {
