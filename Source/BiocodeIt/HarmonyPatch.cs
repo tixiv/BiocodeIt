@@ -126,10 +126,10 @@ namespace Krelinos_BiocodeIt
             {
                 // Normally this ThingWithComps is not biocodable.
 
-                // Should we make it biocodable?
+                // Should we make it biocodable? 
 
                 if (BiocodeIt_Settings.biocodeAllTheThings &&
-                    (__instance.def.IsWithinCategory(ThingCategoryDefOf.Weapons) || __instance.def.IsWithinCategory(ThingCategoryDefOf.Apparel)))
+                    (__instance.def.IsWithinCategory(ThingCategoryDefOf.Weapons) || __instance.def.IsWithinCategory(ThingCategoryDefOf.Apparel) )) // || __instance.def.IsWithinCategory(ThingCategoryDefOf.BodyParts)
                 {
                     // Yes: add CompBiocodable to it.
                     // Doing it like this is more compatible than through an xml file because
@@ -141,7 +141,7 @@ namespace Krelinos_BiocodeIt
                     {
                         biocodeOnEquip = false
                     };
-
+                     
                     var compBiocodable = new CompBiocodable
                     {
                         parent = __instance
