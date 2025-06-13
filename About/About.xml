@@ -6,8 +6,9 @@
     <packageId>Tixiv.BiocodeIt</packageId>
     <supportedVersions>
         <li>1.5</li>
+        <li>1.6</li>
     </supportedVersions>
-    <description>This mod is a port of the BiocodeIt! mod by Krelinos to game version 1.5.
+    <description>This mod is a port of the BiocodeIt! mod by Krelinos to game versions 1.5 and 1.6.
 
 Original description:
 Your enemies biocode their weapons to prevent you from stealing and using them, so why can't you? Well with this mod, now you can!
